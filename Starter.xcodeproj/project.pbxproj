@@ -11,6 +11,7 @@
 		FA474B452BB2F7AE00940665 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B442BB2F7AE00940665 /* ContentView.swift */; };
 		FA474B472BB2F7B100940665 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA474B462BB2F7B100940665 /* Assets.xcassets */; };
 		FA474B4A2BB2F7B100940665 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA474B492BB2F7B100940665 /* Preview Assets.xcassets */; };
+		FA474B522BB461BE00940665 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B512BB461BE00940665 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		FA474B442BB2F7AE00940665 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA474B462BB2F7B100940665 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA474B492BB2F7B100940665 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FA474B512BB461BE00940665 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		FA474B412BB2F7AE00940665 /* Starter */ = {
 			isa = PBXGroup;
 			children = (
+				FA474B502BB461AB00940665 /* Models */,
 				FA474B422BB2F7AE00940665 /* StarterApp.swift */,
 				FA474B442BB2F7AE00940665 /* ContentView.swift */,
 				FA474B462BB2F7B100940665 /* Assets.xcassets */,
@@ -65,6 +68,14 @@
 				FA474B492BB2F7B100940665 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FA474B502BB461AB00940665 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA474B512BB461BE00940665 /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			files = (
 				FA474B452BB2F7AE00940665 /* ContentView.swift in Sources */,
 				FA474B432BB2F7AE00940665 /* StarterApp.swift in Sources */,
+				FA474B522BB461BE00940665 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
