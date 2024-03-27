@@ -12,7 +12,7 @@
 		FA474B472BB2F7B100940665 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA474B462BB2F7B100940665 /* Assets.xcassets */; };
 		FA474B4A2BB2F7B100940665 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA474B492BB2F7B100940665 /* Preview Assets.xcassets */; };
 		FA474B522BB461BE00940665 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B512BB461BE00940665 /* User.swift */; };
-		FA474B542BB4981A00940665 /* README in Resources */ = {isa = PBXBuildFile; fileRef = FA474B532BB4981A00940665 /* README */; };
+		FA474B542BB4981A00940665 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FA474B532BB4981A00940665 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,7 +22,7 @@
 		FA474B462BB2F7B100940665 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA474B492BB2F7B100940665 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA474B512BB461BE00940665 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		FA474B532BB4981A00940665 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		FA474B532BB4981A00940665 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,7 +39,7 @@
 		FA474B362BB2F7AE00940665 = {
 			isa = PBXGroup;
 			children = (
-				FA474B532BB4981A00940665 /* README */,
+				FA474B532BB4981A00940665 /* README.md */,
 				FA474B412BB2F7AE00940665 /* Starter */,
 				FA474B402BB2F7AE00940665 /* Products */,
 			);
@@ -139,7 +139,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA474B542BB4981A00940665 /* README in Resources */,
+				FA474B542BB4981A00940665 /* README.md in Resources */,
 				FA474B4A2BB2F7B100940665 /* Preview Assets.xcassets in Resources */,
 				FA474B472BB2F7B100940665 /* Assets.xcassets in Resources */,
 			);
