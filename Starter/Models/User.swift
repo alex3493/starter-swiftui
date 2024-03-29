@@ -64,3 +64,39 @@ extension User {
         return parts.map({ $0.prefix(1) }).joined()
     }
 }
+
+/// User registered device - we read it from token API.
+struct UserDevice: Codable {
+    let id: String
+    let name: String
+    let lastUsedDate: Date?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case lastUsedDate = "last_used_at"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        // We support both integer and string id.
+        if let intId = try? values.decode(Int.self, forKey: .id) {
+            id = "\(intId)"
+        } else {
+            id = try values.decode(String.self, forKey: .id)
+        }
+        name = try values.decode(String.self, forKey: .name)
+        
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions.insert(.withFractionalSeconds)
+        
+        let dateString: String? = try? values.decode(String.self, forKey: .lastUsedDate)
+        if let dateString = dateString {
+            lastUsedDate = formatter.date(from: dateString)
+        } else {
+            lastUsedDate = nil
+        }
+    }
+}
+
