@@ -14,6 +14,8 @@ class AuthViewModel: ObservableObject {
     
     let errorService = ErrorService.shared
     
+    let feedbackService = FeedbackAlertService.shared
+    
     @Published var currentUser: User?
     
     @Published var currentUserDevices: [UserDevice]?
@@ -50,31 +52,56 @@ class AuthViewModel: ObservableObject {
         } catch {
             print("DEBUG :: Login error", error.localizedDescription)
         }
-        
     }
     
     func signOut() async {
         guard currentUser != nil else { return }
         
-        do {
-            try await authManager.logout()
-            
-            self.currentUser = nil
-        } catch {
-            print("DEBUG :: Logout error", error.localizedDescription)
-        }
+        feedbackService.showConfirmationView(withTitle: nil, confirmButtonText: "Sign Out", dismissButtonText: "Stay Connected", callback: {
+            Task {
+                do {
+                    try await self.authManager.logout()
+                    
+                    self.currentUser = nil
+                } catch {
+                    print("DEBUG :: Logout error", error.localizedDescription)
+                }
+            }
+
+        })
+        
+//        do {
+//            // try await authManager.logout()
+//            
+//            // self.currentUser = nil
+//        } catch {
+//            print("DEBUG :: Logout error", error.localizedDescription)
+//        }
     }
     
     func deleteAccount() async {
         guard currentUser != nil else { return }
         
-        do {
-            try await authManager.deleteAccount()
-            
-            self.currentUser = nil
-        } catch {
-            print("DEBUG :: Logout error", error.localizedDescription)
-        }
+        feedbackService.showConfirmationView(withTitle: "This action cannot be undone", confirmButtonText: "Delete Account", dismissButtonText: "Keep Account", callback: {
+            Task {
+                do {
+                    try await self.authManager.deleteAccount()
+                    
+                    self.currentUser = nil
+                } catch {
+                    print("DEBUG :: Delete account error", error.localizedDescription)
+                }
+            }
+
+        })
+        
+//        do {
+//            try await authManager.deleteAccount()
+//            
+//            self.currentUser = nil
+//        } catch {
+//            print("DEBUG :: Delete account error", error.localizedDescription)
+//        }
     }
     
     func updateProfile(name: String, email: String, newPassword: String, currentPassword: String) async -> Bool {

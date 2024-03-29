@@ -27,6 +27,8 @@
 		FA474B732BB66E2500940665 /* ErrorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B722BB66E2500940665 /* ErrorService.swift */; };
 		FA474B752BB6B37900940665 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B742BB6B37900940665 /* ProfileView.swift */; };
 		FA474B772BB6B39900940665 /* UpdateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B762BB6B39900940665 /* UpdateProfileView.swift */; };
+		FA474B792BB6B88400940665 /* FeedbackAlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B782BB6B88400940665 /* FeedbackAlertService.swift */; };
+		FA474B7B2BB6C54900940665 /* FeedbackViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B7A2BB6C54900940665 /* FeedbackViewModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		FA474B722BB66E2500940665 /* ErrorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorService.swift; sourceTree = "<group>"; };
 		FA474B742BB6B37900940665 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		FA474B762BB6B39900940665 /* UpdateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileView.swift; sourceTree = "<group>"; };
+		FA474B782BB6B88400940665 /* FeedbackAlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackAlertService.swift; sourceTree = "<group>"; };
+		FA474B7A2BB6C54900940665 /* FeedbackViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,8 @@
 				FA474B5B2BB5580800940665 /* KeychainService.swift */,
 				FA474B5D2BB558EF00940665 /* AuthService.swift */,
 				FA474B722BB66E2500940665 /* ErrorService.swift */,
+				FA474B782BB6B88400940665 /* FeedbackAlertService.swift */,
+				FA474B7A2BB6C54900940665 /* FeedbackViewModifier.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -254,12 +260,14 @@
 				FA474B5C2BB5580800940665 /* KeychainService.swift in Sources */,
 				FA474B652BB59ABF00940665 /* RegistrationView.swift in Sources */,
 				FA474B612BB5994700940665 /* AuthViewModel.swift in Sources */,
+				FA474B792BB6B88400940665 /* FeedbackAlertService.swift in Sources */,
 				FA474B732BB66E2500940665 /* ErrorService.swift in Sources */,
 				FA474B752BB6B37900940665 /* ProfileView.swift in Sources */,
 				FA474B5E2BB558EF00940665 /* AuthService.swift in Sources */,
 				FA474B572BB553CB00940665 /* PusherService.swift in Sources */,
 				FA474B6B2BB5D33200940665 /* SettingsRowView.swift in Sources */,
 				FA474B632BB59A9400940665 /* LoginView.swift in Sources */,
+				FA474B7B2BB6C54900940665 /* FeedbackViewModifier.swift in Sources */,
 				FA474B522BB461BE00940665 /* User.swift in Sources */,
 				FA474B6A2BB5D33200940665 /* ActionButton.swift in Sources */,
 				FA474B712BB5D44B00940665 /* ChatListView.swift in Sources */,
