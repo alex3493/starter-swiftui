@@ -15,10 +15,11 @@ enum AppError: LocalizedError {
     
     case profileUpdateError(message: String?)
     
-    var errorDescription: String? {
+    public var errorDescription: String? {
         switch self {
+            
         case .loginError:
-            return "Failed logging in account"
+            return "Failed logging into account"
         case .registrationError:
             return "Failed registering new account"
         case .profileUpdateError:
@@ -26,7 +27,7 @@ enum AppError: LocalizedError {
         }
     }
     
-    var failureReason: String? {
+    public var failureReason: String? {
         switch self {
             
         case .loginError(let message):

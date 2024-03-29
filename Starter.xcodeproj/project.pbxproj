@@ -25,6 +25,8 @@
 		FA474B6C2BB5D33200940665 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B682BB5D33200940665 /* TextInputView.swift */; };
 		FA474B712BB5D44B00940665 /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B702BB5D44B00940665 /* ChatListView.swift */; };
 		FA474B732BB66E2500940665 /* ErrorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B722BB66E2500940665 /* ErrorService.swift */; };
+		FA474B752BB6B37900940665 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B742BB6B37900940665 /* ProfileView.swift */; };
+		FA474B772BB6B39900940665 /* UpdateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B762BB6B39900940665 /* UpdateProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		FA474B682BB5D33200940665 /* TextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 		FA474B702BB5D44B00940665 /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
 		FA474B722BB66E2500940665 /* ErrorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorService.swift; sourceTree = "<group>"; };
+		FA474B742BB6B37900940665 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		FA474B762BB6B39900940665 /* UpdateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 		FA474B6E2BB5D3FE00940665 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				FA474B742BB6B37900940665 /* ProfileView.swift */,
+				FA474B762BB6B39900940665 /* UpdateProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -242,12 +248,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA474B452BB2F7AE00940665 /* ContentView.swift in Sources */,
+				FA474B772BB6B39900940665 /* UpdateProfileView.swift in Sources */,
 				FA474B432BB2F7AE00940665 /* StarterApp.swift in Sources */,
 				FA474B6C2BB5D33200940665 /* TextInputView.swift in Sources */,
 				FA474B5C2BB5580800940665 /* KeychainService.swift in Sources */,
 				FA474B652BB59ABF00940665 /* RegistrationView.swift in Sources */,
 				FA474B612BB5994700940665 /* AuthViewModel.swift in Sources */,
 				FA474B732BB66E2500940665 /* ErrorService.swift in Sources */,
+				FA474B752BB6B37900940665 /* ProfileView.swift in Sources */,
 				FA474B5E2BB558EF00940665 /* AuthService.swift in Sources */,
 				FA474B572BB553CB00940665 /* PusherService.swift in Sources */,
 				FA474B6B2BB5D33200940665 /* SettingsRowView.swift in Sources */,
