@@ -16,7 +16,7 @@ struct ContentView: View {
     let pusherManager = PusherManager.shared
     
     var body: some View {
-
+        
         Group {
             if authViewModel.currentUser != nil {
                 ChatListView()
@@ -29,6 +29,8 @@ struct ContentView: View {
             } else {
                 ProgressView()
             }
+            
+            // TODO: use EmptyView() with alert modifier for each type of feedback...
         }
         .task {
             do {

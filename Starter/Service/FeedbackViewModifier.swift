@@ -16,7 +16,8 @@ struct FeedbackViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         // Here we cannot chain alerts, i.e. attach more than one alert to the same view.
         // So we are using a simple condition below.
-        if errorStore.isPresentingAlert.wrappedValue {
+        // TODO: The code below doesn't work! Only first condition is OK if always true...
+        if errorStore.activeError != nil {
             content
                 .alert(isPresented: errorStore.isPresentingAlert) {
                     Alert(
@@ -24,7 +25,7 @@ struct FeedbackViewModifier: ViewModifier {
                         message: Text((errorStore.activeError?.failureReason)!)
                     )
                 }
-        } else if feedbackStore.isPresentingAlert.wrappedValue {
+        } else if feedbackStore.activeAlert != nil {
             content
                 .alert(isPresented: feedbackStore.isPresentingAlert) {
                     Alert(
@@ -33,7 +34,7 @@ struct FeedbackViewModifier: ViewModifier {
                         dismissButton: .default(Text(feedbackStore.activeAlert?.dismissButtonText ?? "OK"))
                     )
                 }
-        } else if feedbackStore.isPresentingConfirmation.wrappedValue {
+        } else if feedbackStore.activeConfirmation != nil {
             content
                 .confirmationDialog(feedbackStore.activeConfirmation?.title ?? "Are you sure?", isPresented: feedbackStore.isPresentingConfirmation, titleVisibility: .visible, actions: {
                     Button(role: .destructive) {

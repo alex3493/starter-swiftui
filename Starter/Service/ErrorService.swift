@@ -15,6 +15,8 @@ enum AppError: LocalizedError {
     
     case profileUpdateError(message: String?)
     
+    case passwordUpdateError(message: String?)
+    
     public var errorDescription: String? {
         switch self {
             
@@ -24,6 +26,8 @@ enum AppError: LocalizedError {
             return "Failed registering new account"
         case .profileUpdateError:
             return "Failed updating user profile"
+        case .passwordUpdateError:
+            return "Failed updating password"
         }
     }
     
@@ -36,6 +40,8 @@ enum AppError: LocalizedError {
             return message ?? "Email creating account"
         case .profileUpdateError(let message):
             return message ?? "Error trying to update user profile"
+        case .passwordUpdateError(message: let message):
+            return message ?? "Error trying to update password"
         }
     }
     

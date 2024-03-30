@@ -26,7 +26,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func register(name: String, email: String, password: String, passwordConfirmation: String) async throws {
+    func register(name: String, email: String, password: String, passwordConfirmation: String) async {
         do {
             try await authManager.register(name: name, email: email, password: password, password_confirmation: passwordConfirmation)
             
@@ -104,17 +104,34 @@ class AuthViewModel: ObservableObject {
 //        }
     }
     
-    func updateProfile(name: String, email: String, newPassword: String, currentPassword: String) async -> Bool {
+    // TODO: make profile and password update function return a "success" boolean.
+    func updateProfile(name: String, email: String) async throws {
         do {
-            try await authManager.updateProfile(name: name, email: email, currentPassword: currentPassword, newPassword: newPassword)
+            try await authManager.updateProfile(name: name, email: email)
+            
+            await fetchUser()
+        } catch AppError.profileUpdateError(let message) {
+            print("DEBUG :: Update profile error", message ?? "")
+            
+            errorService.showProfileUpdateAlertView(withMessage: message)
+            
+            throw AppError.profileUpdateError(message: message)
+        } catch {
+            print("DEBUG :: Update profile error", error.localizedDescription)
+            
+            throw error
+        }
+    }
+    
+    func updatePassword(currentPassword: String, newPassword: String, newPasswordConfirmation: String) async {
+        do {
+            try await authManager.updatePassword(currentPassword: currentPassword, newPassword: newPassword, newPasswordConfirmation: newPasswordConfirmation)
             
             await fetchUser()
         } catch {
-            print("DEBUG :: Update profile error", error.localizedDescription)
-            return false
+            print("DEBUG :: Update password error", error.localizedDescription)
+            // TODO: error service here...
         }
-        
-        return true
     }
     
     func fetchUser() async {
