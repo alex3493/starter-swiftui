@@ -60,11 +60,15 @@ struct ProfileView: View {
                     }
                 }
                 
-                Section("Account") {
+                Section("Devices") {
                     if let devices = authViewModel.currentUserDevices {
                         ForEach(devices, id:\.id) { item in
                             HStack {
                                 Text("\(item.name)")
+                                if UIDevice.current.name == item.name {
+                                    Image(systemName: "checkmark.circle")
+                                        .foregroundColor(Color(.systemBlue))
+                                }
                                 Spacer()
                                 if let date = item.lastUsedDate {
                                     Text("\(date.formatted())")
