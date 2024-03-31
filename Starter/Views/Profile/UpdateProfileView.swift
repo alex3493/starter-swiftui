@@ -26,6 +26,7 @@ struct UpdateProfileView: View {
                 VStack(spacing: 16) {
                     TextInputView(text: $name, title: "Name", placeholder: "Name...", isSecureField: false)
                     TextInputView(text: $email, title: "Email", placeholder: "Email...", isSecureField: false)
+                        .autocapitalization(.none)
                     
                     ActionButton(label: "UPDATE PROFILE", action: {
                         do {

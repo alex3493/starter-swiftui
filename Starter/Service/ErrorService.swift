@@ -21,7 +21,7 @@ enum AppError: LocalizedError {
         switch self {
             
         case .loginError:
-            return "Failed logging into account"
+            return "Login failed"
         case .registrationError:
             return "Failed registering new account"
         case .profileUpdateError:

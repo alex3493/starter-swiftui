@@ -45,14 +45,14 @@ final class AuthService: ObservableObject {
     static let shared = AuthService()
     private init() {}
     
-    let registerUrl = URL(string: "http://sanctum-starter.local/api/registration")!
-    let loginUrl = URL(string: "http://sanctum-starter.local/api/sanctum/token")!
-    let fetchUserUrl = URL(string: "http://sanctum-starter.local/api/user")!
-    let logoutUrl = URL(string: "http://sanctum-starter.local/api/logout")!
-    let updateProfileUrl = URL(string: "http://sanctum-starter.local/api/update-profile")!
-    let updatePasswordUrl = URL(string: "http://sanctum-starter.local/api/update-password")!
-    let deleteAccountUrl = URL(string: "http://sanctum-starter.local/api/delete-account")!
-    let fetchUserDevicesUrl = URL(string: "http://sanctum-starter.local/api/registered-devices")!
+    let registerUrl = URL(string: "http://localhost/api/registration")!
+    let loginUrl = URL(string: "http://localhost/api/sanctum/token")!
+    let fetchUserUrl = URL(string: "http://localhost/api/user")!
+    let logoutUrl = URL(string: "http://localhost/api/logout")!
+    let updateProfileUrl = URL(string: "http://localhost/api/update-profile")!
+    let updatePasswordUrl = URL(string: "http://localhost/api/update-password")!
+    let deleteAccountUrl = URL(string: "http://localhost/api/delete-account")!
+    let fetchUserDevicesUrl = URL(string: "http://localhost/api/registered-devices")!
     
     let pusherManager = PusherManager.shared
     
