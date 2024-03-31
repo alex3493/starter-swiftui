@@ -52,7 +52,19 @@ struct ChatListRowView: View {
     }
 }
 
+struct ChatListRowView_Previews: PreviewProvider {
+    static let users: [User] = [
+        User(id: "1", email: "User 1", dateCreated: Date(), name: "Name 1"),
+        User(id: "2", email: "User 2", dateCreated: Date(), name: "Name 2")
+    ]
+    static let chat = Chat(id: "1", topic: "Topic 1", createdAt: Date(), users: users)
+    
+    static var authViewModel = AuthViewModel()
+    
+    static var previews: some View {
+        ChatListRowView(item: chat)
+            .id(chat.id)
+            .environmentObject(authViewModel)
+    }
+}
 
-//#Preview {
-//    ChatListRowView()
-//}

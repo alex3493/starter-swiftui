@@ -23,11 +23,6 @@ struct ChatItemView: View {
 
     @State var cancellables = Set<AnyCancellable>()
     
-//    init(chat: Chat) {
-//        print("***** Chat view (re-)init.", chat.users.count)
-//        self.chat = chat
-//    }
-    
     var body: some View {
         VStack {
             if chatDeleted {

@@ -43,6 +43,13 @@ struct Chat: Codable, Identifiable, Equatable, Hashable {
         }
     }
     
+    init(id: String, topic: String, createdAt: Date?, users: [User]) {
+        self.id = id
+        self.topic = topic
+        self.createdAt = createdAt
+        self.users = users
+    }
+    
 }
 
 struct ChatIdWrapper: Codable {
