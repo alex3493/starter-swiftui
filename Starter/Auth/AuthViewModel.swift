@@ -128,6 +128,8 @@ class AuthViewModel: ObservableObject {
             try await authManager.updatePassword(currentPassword: currentPassword, newPassword: newPassword, newPasswordConfirmation: newPasswordConfirmation)
             
             await fetchUser()
+        
+            feedbackService.showAlertView(withTitle: "Password changed", withMessage: "Please login with new password")
         } catch AppError.passwordUpdateError(let message) {
             print("DEBUG :: Update password error", message ?? "")
             
