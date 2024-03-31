@@ -205,7 +205,7 @@ final class AuthService: ObservableObject {
         
         guard let authToken = KeychainService.shared.read(service: "access-token", account: "org.smartcalc.starter", type: AuthToken.self) else { return }
         
-        var request = URLRequest(url: updateProfileUrl)
+        var request = URLRequest(url: updatePasswordUrl)
         request = setCommonHeaders(request: request)
         request.setValue("Bearer \(authToken.token)", forHTTPHeaderField: "Authorization")
         

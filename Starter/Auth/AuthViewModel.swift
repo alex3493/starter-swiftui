@@ -123,14 +123,21 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func updatePassword(currentPassword: String, newPassword: String, newPasswordConfirmation: String) async {
+    func updatePassword(currentPassword: String, newPassword: String, newPasswordConfirmation: String) async throws {
         do {
             try await authManager.updatePassword(currentPassword: currentPassword, newPassword: newPassword, newPasswordConfirmation: newPasswordConfirmation)
             
             await fetchUser()
+        } catch AppError.passwordUpdateError(let message) {
+            print("DEBUG :: Update password error", message ?? "")
+            
+            errorService.showPasswordUpdateAlertView(withMessage: message)
+            
+            throw AppError.passwordUpdateError(message: message)
         } catch {
             print("DEBUG :: Update password error", error.localizedDescription)
-            // TODO: error service here...
+
+            throw error
         }
     }
     

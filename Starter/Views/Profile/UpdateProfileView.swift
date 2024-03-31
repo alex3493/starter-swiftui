@@ -46,7 +46,11 @@ struct UpdateProfileView: View {
                     TextInputView(text: $newPasswordConfirmation, title: "Confirm New Password", placeholder: "Confirm new password...", isSecureField: true)
                     
                     ActionButton(label: "UPDATE PASSWORD", action: {
-                        await authViewModel.updatePassword(currentPassword: password, newPassword: newPassword, newPasswordConfirmation: newPasswordConfirmation)
+                        do {
+                            try await authViewModel.updatePassword(currentPassword: password, newPassword: newPassword, newPasswordConfirmation: newPasswordConfirmation)
+                        } catch {
+                            print("DEBUG :: Update password error in view", error.localizedDescription)
+                        }
                     }, buttonSystemImage: "lock.fill", backGroundColor: Color(.systemBlue), maxWidth: true)
                 }
             }

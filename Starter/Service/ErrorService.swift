@@ -75,5 +75,9 @@ final class ErrorService: ObservableObject {
         activeError = AppError.profileUpdateError(message: message)
     }
     
+    func showPasswordUpdateAlertView(withMessage message: String?) {
+        activeError = AppError.passwordUpdateError(message: message)
+    }
+    
 }
 

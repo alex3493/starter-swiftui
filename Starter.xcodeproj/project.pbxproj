@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA34A9EA2BB828270043EBCA /* ErrorAlertViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34A9E92BB828270043EBCA /* ErrorAlertViewModifier.swift */; };
+		FA34A9EC2BB828530043EBCA /* FeedbackAlertViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34A9EB2BB828530043EBCA /* FeedbackAlertViewModifier.swift */; };
+		FA34A9EE2BB828680043EBCA /* FeedbackConfirmationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34A9ED2BB828680043EBCA /* FeedbackConfirmationViewModifier.swift */; };
 		FA474B432BB2F7AE00940665 /* StarterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B422BB2F7AE00940665 /* StarterApp.swift */; };
 		FA474B452BB2F7AE00940665 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B442BB2F7AE00940665 /* ContentView.swift */; };
 		FA474B472BB2F7B100940665 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA474B462BB2F7B100940665 /* Assets.xcassets */; };
@@ -32,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA34A9E92BB828270043EBCA /* ErrorAlertViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertViewModifier.swift; sourceTree = "<group>"; };
+		FA34A9EB2BB828530043EBCA /* FeedbackAlertViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackAlertViewModifier.swift; sourceTree = "<group>"; };
+		FA34A9ED2BB828680043EBCA /* FeedbackConfirmationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackConfirmationViewModifier.swift; sourceTree = "<group>"; };
 		FA474B3F2BB2F7AE00940665 /* Starter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Starter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA474B422BB2F7AE00940665 /* StarterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterApp.swift; sourceTree = "<group>"; };
 		FA474B442BB2F7AE00940665 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +74,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA34A9E82BB827F30043EBCA /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				FA474B7A2BB6C54900940665 /* FeedbackViewModifier.swift */,
+				FA34A9E92BB828270043EBCA /* ErrorAlertViewModifier.swift */,
+				FA34A9EB2BB828530043EBCA /* FeedbackAlertViewModifier.swift */,
+				FA34A9ED2BB828680043EBCA /* FeedbackConfirmationViewModifier.swift */,
+			);
+			path = Feedback;
+			sourceTree = "<group>";
+		};
 		FA474B362BB2F7AE00940665 = {
 			isa = PBXGroup;
 			children = (
@@ -120,12 +137,12 @@
 		FA474B552BB5539C00940665 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				FA34A9E82BB827F30043EBCA /* Feedback */,
 				FA474B562BB553CB00940665 /* PusherService.swift */,
 				FA474B5B2BB5580800940665 /* KeychainService.swift */,
 				FA474B5D2BB558EF00940665 /* AuthService.swift */,
 				FA474B722BB66E2500940665 /* ErrorService.swift */,
 				FA474B782BB6B88400940665 /* FeedbackAlertService.swift */,
-				FA474B7A2BB6C54900940665 /* FeedbackViewModifier.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -258,6 +275,8 @@
 				FA474B432BB2F7AE00940665 /* StarterApp.swift in Sources */,
 				FA474B6C2BB5D33200940665 /* TextInputView.swift in Sources */,
 				FA474B5C2BB5580800940665 /* KeychainService.swift in Sources */,
+				FA34A9EC2BB828530043EBCA /* FeedbackAlertViewModifier.swift in Sources */,
+				FA34A9EE2BB828680043EBCA /* FeedbackConfirmationViewModifier.swift in Sources */,
 				FA474B652BB59ABF00940665 /* RegistrationView.swift in Sources */,
 				FA474B612BB5994700940665 /* AuthViewModel.swift in Sources */,
 				FA474B792BB6B88400940665 /* FeedbackAlertService.swift in Sources */,
@@ -267,6 +286,7 @@
 				FA474B572BB553CB00940665 /* PusherService.swift in Sources */,
 				FA474B6B2BB5D33200940665 /* SettingsRowView.swift in Sources */,
 				FA474B632BB59A9400940665 /* LoginView.swift in Sources */,
+				FA34A9EA2BB828270043EBCA /* ErrorAlertViewModifier.swift in Sources */,
 				FA474B7B2BB6C54900940665 /* FeedbackViewModifier.swift in Sources */,
 				FA474B522BB461BE00940665 /* User.swift in Sources */,
 				FA474B6A2BB5D33200940665 /* ActionButton.swift in Sources */,

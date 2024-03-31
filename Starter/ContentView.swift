@@ -30,7 +30,11 @@ struct ContentView: View {
                 ProgressView()
             }
             
-            // TODO: use EmptyView() with alert modifier for each type of feedback...
+            ZStack {
+                Text("").modifier(ErrorAlertViewModifier())
+                Text("").modifier(FeedbackAlertViewModifier())
+                Text("").modifier(FeedbackConfirmationViewModifier())
+            }.frame(width: 0, height: 0).opacity(0)
         }
         .task {
             do {
