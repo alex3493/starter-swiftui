@@ -26,7 +26,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func register(name: String, email: String, password: String, passwordConfirmation: String) async throws {
+    func register(name: String, email: String, password: String, passwordConfirmation: String) async {
         do {
             try await authManager.register(name: name, email: email, password: password, password_confirmation: passwordConfirmation)
             
@@ -104,17 +104,43 @@ class AuthViewModel: ObservableObject {
 //        }
     }
     
-    func updateProfile(name: String, email: String, newPassword: String, currentPassword: String) async -> Bool {
+    // TODO: make profile and password update function return a "success" boolean.
+    func updateProfile(name: String, email: String) async throws {
         do {
-            try await authManager.updateProfile(name: name, email: email, currentPassword: currentPassword, newPassword: newPassword)
+            try await authManager.updateProfile(name: name, email: email)
             
             await fetchUser()
+        } catch AppError.profileUpdateError(let message) {
+            print("DEBUG :: Update profile error", message ?? "")
+            
+            errorService.showProfileUpdateAlertView(withMessage: message)
+            
+            throw AppError.profileUpdateError(message: message)
         } catch {
             print("DEBUG :: Update profile error", error.localizedDescription)
-            return false
+            
+            throw error
         }
+    }
+    
+    func updatePassword(currentPassword: String, newPassword: String, newPasswordConfirmation: String) async throws {
+        do {
+            try await authManager.updatePassword(currentPassword: currentPassword, newPassword: newPassword, newPasswordConfirmation: newPasswordConfirmation)
+            
+            await fetchUser()
         
-        return true
+            feedbackService.showAlertView(withTitle: "Password changed", withMessage: "Please login with new password")
+        } catch AppError.passwordUpdateError(let message) {
+            print("DEBUG :: Update password error", message ?? "")
+            
+            errorService.showPasswordUpdateAlertView(withMessage: message)
+            
+            throw AppError.passwordUpdateError(message: message)
+        } catch {
+            print("DEBUG :: Update password error", error.localizedDescription)
+
+            throw error
+        }
     }
     
     func fetchUser() async {

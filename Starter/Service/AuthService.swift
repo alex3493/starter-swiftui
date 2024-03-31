@@ -26,7 +26,6 @@ struct LoginResponse: Codable {
 }
 
 struct UpdateProfileResponse: Codable {
-    let password_updated: Bool?
     let message: String?
 }
 
@@ -46,13 +45,14 @@ final class AuthService: ObservableObject {
     static let shared = AuthService()
     private init() {}
     
-    let registerUrl = URL(string: "http://sanctum-starter.local/api/registration")!
-    let loginUrl = URL(string: "http://sanctum-starter.local/api/sanctum/token")!
-    let fetchUserUrl = URL(string: "http://sanctum-starter.local/api/user")!
-    let logoutUrl = URL(string: "http://sanctum-starter.local/api/logout")!
-    let updateProfileUrl = URL(string: "http://sanctum-starter.local/api/update-profile")!
-    let deleteAccountUrl = URL(string: "http://sanctum-starter.local/api/delete-account")!
-    let fetchUserDevicesUrl = URL(string: "http://sanctum-starter.local/api/registered-devices")!
+    let registerUrl = URL(string: "http://localhost/api/registration")!
+    let loginUrl = URL(string: "http://localhost/api/sanctum/token")!
+    let fetchUserUrl = URL(string: "http://localhost/api/user")!
+    let logoutUrl = URL(string: "http://localhost/api/logout")!
+    let updateProfileUrl = URL(string: "http://localhost/api/update-profile")!
+    let updatePasswordUrl = URL(string: "http://localhost/api/update-password")!
+    let deleteAccountUrl = URL(string: "http://localhost/api/delete-account")!
+    let fetchUserDevicesUrl = URL(string: "http://localhost/api/registered-devices")!
     
     let pusherManager = PusherManager.shared
     
@@ -164,7 +164,7 @@ final class AuthService: ObservableObject {
         }
     }
     
-    func updateProfile(name: String, email: String, currentPassword: String, newPassword: String) async throws {
+    func updateProfile(name: String, email: String) async throws {
         print("Start update profile...")
         
         guard let authToken = KeychainService.shared.read(service: "access-token", account: "org.smartcalc.starter", type: AuthToken.self) else { return }
@@ -177,31 +177,61 @@ final class AuthService: ObservableObject {
         
         let body: [String: String] = [
             "name": name,
-            "email": email,
-            "current_password": currentPassword,
-            "new_password": newPassword
+            "email": email
         ]
         let finalBody = try JSONSerialization.data(withJSONObject: body)
         
         do {
             let (data, response) = try await URLSession.shared.upload(for: request, from: finalBody)
             
-            let decoded = try JSONDecoder().decode(UpdateProfileResponse.self, from: data)
-            
-            print("***** Update profile response", decoded)
-            
             if response.http?.statusCode != 200 {
-                // Error.
+                // We only expect data in response if there is an error.
+                let decoded = try JSONDecoder().decode(UpdateProfileResponse.self, from: data)
+                
                 print("Error updating profile.", decoded.message ?? "Server error.")
-                // TODO: send error to shared error store.
                 
                 throw AppError.profileUpdateError(message: decoded.message ?? "Error updating profile.")
             } else {
                 print("Profile updated successfully!")
+            }
+        } catch {
+            // Re-throw error to calling script.
+            throw error
+        }
+    }
+    
+    func updatePassword(currentPassword: String, newPassword: String, newPasswordConfirmation: String) async throws {
+        print("Start update password...")
+        
+        guard let authToken = KeychainService.shared.read(service: "access-token", account: "org.smartcalc.starter", type: AuthToken.self) else { return }
+        
+        var request = URLRequest(url: updatePasswordUrl)
+        request = setCommonHeaders(request: request)
+        request.setValue("Bearer \(authToken.token)", forHTTPHeaderField: "Authorization")
+        
+        request.httpMethod = "PATCH"
+        
+        let body: [String: String] = [
+            "current_password": currentPassword,
+            "new_password": newPassword,
+            "new_password_confirmation": newPasswordConfirmation
+        ]
+        let finalBody = try JSONSerialization.data(withJSONObject: body)
+        
+        do {
+            let (data, response) = try await URLSession.shared.upload(for: request, from: finalBody)
+            
+            if response.http?.statusCode != 200 {
+                // We only expect data in response if there is an error.
+                let decoded = try JSONDecoder().decode(UpdateProfileResponse.self, from: data)
                 
-                if decoded.password_updated ?? false {
-                    updateTokenStorage(token: nil)
-                }
+                print("Error updating password.", decoded.message ?? "Server error.")
+                
+                throw AppError.passwordUpdateError(message: decoded.message ?? "Error updating password.")
+            } else {
+                print("Password updated successfully!")
+                
+                updateTokenStorage(token: nil)
             }
         } catch {
             // Re-throw error to calling script.

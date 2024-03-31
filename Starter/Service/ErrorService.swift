@@ -15,15 +15,19 @@ enum AppError: LocalizedError {
     
     case profileUpdateError(message: String?)
     
+    case passwordUpdateError(message: String?)
+    
     public var errorDescription: String? {
         switch self {
             
         case .loginError:
-            return "Failed logging into account"
+            return "Login failed"
         case .registrationError:
             return "Failed registering new account"
         case .profileUpdateError:
             return "Failed updating user profile"
+        case .passwordUpdateError:
+            return "Failed updating password"
         }
     }
     
@@ -36,6 +40,8 @@ enum AppError: LocalizedError {
             return message ?? "Email creating account"
         case .profileUpdateError(let message):
             return message ?? "Error trying to update user profile"
+        case .passwordUpdateError(message: let message):
+            return message ?? "Error trying to update password"
         }
     }
     
@@ -67,6 +73,10 @@ final class ErrorService: ObservableObject {
     
     func showProfileUpdateAlertView(withMessage message: String?) {
         activeError = AppError.profileUpdateError(message: message)
+    }
+    
+    func showPasswordUpdateAlertView(withMessage message: String?) {
+        activeError = AppError.passwordUpdateError(message: message)
     }
     
 }

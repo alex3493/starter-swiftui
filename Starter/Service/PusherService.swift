@@ -219,7 +219,7 @@ class AuthRequestBuilder: AuthRequestBuilderProtocol {
         
         // print("AuthRequestBuilder requestFor:", socketID, channelName)
         
-        var request = URLRequest(url: URL(string: "http://sanctum-starter.local/broadcasting/auth")!)
+        var request = URLRequest(url: URL(string: "http://localhost/broadcasting/auth")!)
         
         request.setValue("Bearer \(authToken)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Accept")

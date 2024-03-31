@@ -16,7 +16,7 @@ struct ContentView: View {
     let pusherManager = PusherManager.shared
     
     var body: some View {
-
+        
         Group {
             if authViewModel.currentUser != nil {
                 ChatListView()
@@ -29,6 +29,12 @@ struct ContentView: View {
             } else {
                 ProgressView()
             }
+            
+            ZStack {
+                Text("").modifier(ErrorAlertViewModifier())
+                Text("").modifier(FeedbackAlertViewModifier())
+                Text("").modifier(FeedbackConfirmationViewModifier())
+            }.frame(width: 0, height: 0).opacity(0)
         }
         .task {
             do {

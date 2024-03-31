@@ -16,7 +16,6 @@ struct StarterApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(authViewModel)
-                .modifier(FeedbackViewModifier())
         }
     }
 }
