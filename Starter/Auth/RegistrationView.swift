@@ -38,11 +38,12 @@ struct RegistrationView: View {
             
             Button {
                 Task {
-                    do {
-                        try await authViewModel.register(name: name, email: email, password: password, passwordConfirmation: confirmPassword)
-                    } catch {
-                        print("DEBUG :: Error creating account: \(error.localizedDescription)")
-                    }
+                    await authViewModel.register(name: name, email: email, password: password, passwordConfirmation: confirmPassword)
+                    //                    do {
+                    //                        try await authViewModel.register(name: name, email: email, password: password, passwordConfirmation: confirmPassword)
+                    //                    } catch {
+                    //                        print("DEBUG :: Error creating account: \(error.localizedDescription)")
+                    //                    }
                 }
             } label: {
                 HStack {
