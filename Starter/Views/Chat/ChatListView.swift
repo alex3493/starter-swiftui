@@ -22,7 +22,9 @@ struct ChatListView: View {
         NavigationStack {
             let items = vm.chats.enumerated().map({ $0 })
             ScrollView {
-                LazyVStack {
+                // TODO: in lazy-loading views we shouldn't use navigationDestination.
+                // LazyVStack {
+                VStack {
                     ForEach(items, id: \.element.id) { index, item in
                         ChatListRowView(item: item)
                             .id(item.id)
@@ -35,9 +37,12 @@ struct ChatListView: View {
                             }
                     }
                 }
-                .navigationDestination(for: Chat.self) { chat in
-                    ChatEditView(topic: chat.topic, chatId: chat.id)
-                }
+                // TODO: this modifier doesn't work.
+                // We had to change LazyVStack to VStack in order to avoid compiler warnings...
+                // Check modifier version below...
+//                .navigationDestination(for: Chat.self) { chat in
+//                    ChatEditView(topic: chat.topic, chatId: chat.id)
+//                }
                 .scrollTargetLayout()
             }
             .scrollPosition(id: $scrolledID)

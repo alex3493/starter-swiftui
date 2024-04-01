@@ -49,6 +49,10 @@ struct ChatListRowView: View {
             }
         } : nil)
         .padding()
+        // TODO: we temporarily put navigationDestination on each item in list.
+        .navigationDestination(isPresented: $showEditView) {
+            ChatEditView(topic: item.topic, chatId: item.id)
+        }
     }
 }
 
