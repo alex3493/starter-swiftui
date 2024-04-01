@@ -20,6 +20,9 @@
 		FA34A9FE2BB983C30043EBCA /* ChatEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34A9FD2BB983C30043EBCA /* ChatEditView.swift */; };
 		FA34AA002BB9854D0043EBCA /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34A9FF2BB9854D0043EBCA /* MessageListView.swift */; };
 		FA34AA022BB985D50043EBCA /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34AA012BB985D50043EBCA /* MessageView.swift */; };
+		FA34AA042BBA93490043EBCA /* ChatCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34AA032BBA93490043EBCA /* ChatCreateViewModel.swift */; };
+		FA34AA062BBA93DE0043EBCA /* ChatEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34AA052BBA93DE0043EBCA /* ChatEditViewModel.swift */; };
+		FA34AA082BBA943B0043EBCA /* MessageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34AA072BBA943B0043EBCA /* MessageListViewModel.swift */; };
 		FA474B432BB2F7AE00940665 /* StarterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B422BB2F7AE00940665 /* StarterApp.swift */; };
 		FA474B452BB2F7AE00940665 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B442BB2F7AE00940665 /* ContentView.swift */; };
 		FA474B472BB2F7B100940665 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA474B462BB2F7B100940665 /* Assets.xcassets */; };
@@ -41,7 +44,6 @@
 		FA474B752BB6B37900940665 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B742BB6B37900940665 /* ProfileView.swift */; };
 		FA474B772BB6B39900940665 /* UpdateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B762BB6B39900940665 /* UpdateProfileView.swift */; };
 		FA474B792BB6B88400940665 /* FeedbackAlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B782BB6B88400940665 /* FeedbackAlertService.swift */; };
-		FA474B7B2BB6C54900940665 /* FeedbackViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474B7A2BB6C54900940665 /* FeedbackViewModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,9 @@
 		FA34A9FD2BB983C30043EBCA /* ChatEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEditView.swift; sourceTree = "<group>"; };
 		FA34A9FF2BB9854D0043EBCA /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
 		FA34AA012BB985D50043EBCA /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		FA34AA032BBA93490043EBCA /* ChatCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCreateViewModel.swift; sourceTree = "<group>"; };
+		FA34AA052BBA93DE0043EBCA /* ChatEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEditViewModel.swift; sourceTree = "<group>"; };
+		FA34AA072BBA943B0043EBCA /* MessageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListViewModel.swift; sourceTree = "<group>"; };
 		FA474B3F2BB2F7AE00940665 /* Starter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Starter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA474B422BB2F7AE00940665 /* StarterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterApp.swift; sourceTree = "<group>"; };
 		FA474B442BB2F7AE00940665 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,7 +84,6 @@
 		FA474B742BB6B37900940665 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		FA474B762BB6B39900940665 /* UpdateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileView.swift; sourceTree = "<group>"; };
 		FA474B782BB6B88400940665 /* FeedbackAlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackAlertService.swift; sourceTree = "<group>"; };
-		FA474B7A2BB6C54900940665 /* FeedbackViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,15 +98,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FA34A9E82BB827F30043EBCA /* Feedback */ = {
+		FA34A9E82BB827F30043EBCA /* FeedbackViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
-				FA474B7A2BB6C54900940665 /* FeedbackViewModifier.swift */,
 				FA34A9E92BB828270043EBCA /* ErrorAlertViewModifier.swift */,
 				FA34A9EB2BB828530043EBCA /* FeedbackAlertViewModifier.swift */,
 				FA34A9ED2BB828680043EBCA /* FeedbackConfirmationViewModifier.swift */,
 			);
-			path = Feedback;
+			path = FeedbackViewModifiers;
+			sourceTree = "<group>";
+		};
+		FA34AA092BBA949A0043EBCA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FA34AA052BBA93DE0043EBCA /* ChatEditViewModel.swift */,
+				FA34AA072BBA943B0043EBCA /* MessageListViewModel.swift */,
+				FA34AA032BBA93490043EBCA /* ChatCreateViewModel.swift */,
+				FA34A9EF2BB979260043EBCA /* ChatListViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		FA474B362BB2F7AE00940665 = {
@@ -159,7 +173,7 @@
 		FA474B552BB5539C00940665 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				FA34A9E82BB827F30043EBCA /* Feedback */,
+				FA34A9E82BB827F30043EBCA /* FeedbackViewModifiers */,
 				FA474B562BB553CB00940665 /* PusherService.swift */,
 				FA474B5B2BB5580800940665 /* KeychainService.swift */,
 				FA474B5D2BB558EF00940665 /* AuthService.swift */,
@@ -211,8 +225,8 @@
 		FA474B6F2BB5D40A00940665 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				FA34AA092BBA949A0043EBCA /* ViewModels */,
 				FA474B702BB5D44B00940665 /* ChatListView.swift */,
-				FA34A9EF2BB979260043EBCA /* ChatListViewModel.swift */,
 				FA34A9F72BB9834E0043EBCA /* ChatCreateView.swift */,
 				FA34A9F92BB983600043EBCA /* ChatListRowView.swift */,
 				FA34A9FB2BB9839D0043EBCA /* ChatItemView.swift */,
@@ -312,6 +326,7 @@
 				FA34A9EE2BB828680043EBCA /* FeedbackConfirmationViewModifier.swift in Sources */,
 				FA474B652BB59ABF00940665 /* RegistrationView.swift in Sources */,
 				FA34A9F82BB9834E0043EBCA /* ChatCreateView.swift in Sources */,
+				FA34AA062BBA93DE0043EBCA /* ChatEditViewModel.swift in Sources */,
 				FA474B612BB5994700940665 /* AuthViewModel.swift in Sources */,
 				FA474B792BB6B88400940665 /* FeedbackAlertService.swift in Sources */,
 				FA474B732BB66E2500940665 /* ErrorService.swift in Sources */,
@@ -320,14 +335,15 @@
 				FA34A9F42BB97A810043EBCA /* ApiService.swift in Sources */,
 				FA34AA022BB985D50043EBCA /* MessageView.swift in Sources */,
 				FA474B5E2BB558EF00940665 /* AuthService.swift in Sources */,
+				FA34AA042BBA93490043EBCA /* ChatCreateViewModel.swift in Sources */,
 				FA474B572BB553CB00940665 /* PusherService.swift in Sources */,
 				FA474B6B2BB5D33200940665 /* SettingsRowView.swift in Sources */,
 				FA474B632BB59A9400940665 /* LoginView.swift in Sources */,
 				FA34A9FA2BB983600043EBCA /* ChatListRowView.swift in Sources */,
 				FA34A9EA2BB828270043EBCA /* ErrorAlertViewModifier.swift in Sources */,
-				FA474B7B2BB6C54900940665 /* FeedbackViewModifier.swift in Sources */,
 				FA474B522BB461BE00940665 /* User.swift in Sources */,
 				FA474B6A2BB5D33200940665 /* ActionButton.swift in Sources */,
+				FA34AA082BBA943B0043EBCA /* MessageListViewModel.swift in Sources */,
 				FA474B712BB5D44B00940665 /* ChatListView.swift in Sources */,
 				FA34AA002BB9854D0043EBCA /* MessageListView.swift in Sources */,
 				FA34A9FC2BB9839D0043EBCA /* ChatItemView.swift in Sources */,
