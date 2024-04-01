@@ -298,18 +298,29 @@ final class PusherManager {
             return
         }
         
+        /*
+         Pusher settings.
+         */
         let options = PusherClientOptions(
             authMethod: AuthMethod.authRequestBuilder(authRequestBuilder: AuthRequestBuilder(authToken: authToken)),
             host: .cluster("mt1")
-            
-            //            host: .host("127.0.0.1"),
-            //            port: 6001,
-            //            useTLS: false
         )
-        
         pusher = Pusher(key: "0771a4f2df23b943dcae", options: options)
         
-        //        pusher = Pusher(key: "app-key", options: options)
+        /*
+         Soketi settings.
+         */
+//        let options = PusherClientOptions(
+//            authMethod: AuthMethod.authRequestBuilder(authRequestBuilder: AuthRequestBuilder(authToken: authToken)),
+//            host: .host("127.0.0.1"),
+//            port: 6001,
+//            useTLS: false
+//        )
+//        pusher = Pusher(key: "app-key", options: options)
+        
+        /*
+         Common code.
+         */
         
         pusher?.connection.delegate = connectionDelegate
         
