@@ -56,7 +56,7 @@ struct ChatIdWrapper: Codable {
     let chatId: String
     
     enum CodingKeys: String, CodingKey {
-        case chatId = "chat_id"
+        case chatId
     }
     
     init(from decoder: Decoder) throws {

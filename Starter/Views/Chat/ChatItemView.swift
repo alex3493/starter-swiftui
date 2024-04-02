@@ -17,55 +17,56 @@ struct ChatItemView: View {
     // Source of truth.
     let chat: Chat
     
-    @State var chatDeleted: Bool = false
-
     let manager = PusherManager.shared
-
+    
     @State var cancellables = Set<AnyCancellable>()
     
     var body: some View {
         VStack {
-            if chatDeleted {
-                // TODO: show custom text here - if a user leaves his own chat and there are no other chat members - we delete chat, so this is not a moderation effect. However, if the chat was deleted explicitly, we should should "moderator" alert...
-                Text("Chat was deleted")
+            VStack {
+                ForEach(showUsers, id: \.self) { user in
+                    HStack {
+                        Text(user.name)
+                        Spacer()
+                    }
+                }
+            }
+            if showMoreUsersCount > 0 {
+                HStack {
+                    Text("... and \(showMoreUsersCount) more")
+                    Spacer()
+                }
+            }
+            if isChatMember {
                 Button {
-                    dismiss()
+                    Task {
+                        try await leaveChat()
+                    }
                 } label: {
-                    Text("Return to chat list")
+                    HStack(spacing: 3) {
+                        Text("Leave")
+                            .fontWeight(.bold)
+                    }
+                    .font(.system(size: 16))
                 }
+                
+                Spacer()
+                
+                MessageListView(chat: chat)
             } else {
-                Text("\(chat.users.count) user(s) connected")
-                if isChatMember {
-                    Button {
-                        Task {
-                            try await leaveChat()
-                        }
-                    } label: {
-                        HStack(spacing: 3) {
-                            Text("Leave")
-                                .fontWeight(.bold)
-                        }
-                        .font(.system(size: 16))
+                Button {
+                    Task {
+                        try await joinChat()
                     }
-                    
-                    Spacer()
-                    
-                    MessageListView(chat: chat)
-                } else {
-                    Button {
-                        Task {
-                            try await joinChat()
-                        }
-                    } label: {
-                        HStack(spacing: 3) {
-                            Text("Join")
-                                .fontWeight(.bold)
-                        }
-                        .font(.system(size: 16))
+                } label: {
+                    HStack(spacing: 3) {
+                        Text("Join")
+                            .fontWeight(.bold)
                     }
-                    
-                    Spacer()
+                    .font(.system(size: 16))
                 }
+                
+                Spacer()
             }
         }
         .navigationTitle(chat.topic)
@@ -85,9 +86,6 @@ struct ChatItemView: View {
             
             print("+++++ Cancellables count on disappear", cancellables.count)
         }
-//        .onChange(of: chat) { oldValue, newValue in
-//            print("***** Chat has changed!", oldValue.users.count, newValue.users.count)
-//        }
     }
     
     var isChatMember: Bool {
@@ -124,7 +122,9 @@ struct ChatItemView: View {
                 if let data = value["data"] as? ChatIdWrapper {
                     if data.chatId == "\(self.chat.id)" {
                         print("Deleted chat!")
-                        self.chatDeleted = true
+                        
+                        FeedbackAlertService.shared.showAlertView(withTitle: "Chat deleted", withMessage: "Chat is not available any more")
+                        dismiss()
                     }
                 }
             }
@@ -135,9 +135,34 @@ struct ChatItemView: View {
     func unsubscribeFromMessages() {
         manager.disconnectChannel(channelName: "private-chat.updates.\(chat.id)")
     }
+    
+    var showUsers: ArraySlice<User> {
+        if chat.users.count > 3 {
+            return chat.users[..<3]
+        } else {
+            return chat.users[...]
+        }
+    }
+    
+    var showMoreUsersCount: Int {
+        return chat.users.count - 3
+    }
 }
 
-
-//#Preview {
-//    ChatItemView()
-//}
+struct ChatItemView_Previews: PreviewProvider {
+    static let users: [User] = [
+        User(id: "1", email: "User 1", dateCreated: Date(), name: "Name 1"),
+        User(id: "2", email: "User 2", dateCreated: Date(), name: "Name 2"),
+        User(id: "3", email: "User 3", dateCreated: Date(), name: "Name 3"),
+        User(id: "4", email: "User 4", dateCreated: Date(), name: "Name 4")
+    ]
+    static let chat = Chat(id: "1", topic: "Topic 1", createdAt: Date(), users: users)
+    
+    static var authViewModel = AuthViewModel()
+    
+    static var previews: some View {
+        ChatItemView(chat: chat)
+            .id(chat.id)
+            .environmentObject(authViewModel)
+    }
+}
