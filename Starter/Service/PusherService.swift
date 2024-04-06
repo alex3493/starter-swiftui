@@ -289,6 +289,8 @@ final class PusherManager {
     
     var cancellables = Set<AnyCancellable>()
     
+    var keepAliveCallbackId: String? = nil
+    
     private init() {}
     
     public func configure() {
@@ -303,9 +305,11 @@ final class PusherManager {
          */
         let options = PusherClientOptions(
             authMethod: AuthMethod.authRequestBuilder(authRequestBuilder: AuthRequestBuilder(authToken: authToken)),
-            host: .cluster("mt1")
+            host: .host("0.0.0.0"),
+            port: 8080,
+            useTLS: false
         )
-        pusher = Pusher(key: "0771a4f2df23b943dcae", options: options)
+        pusher = Pusher(key: "silextnxvnuat4blcxwg", options: options)
         
         /*
          Soketi settings.
@@ -343,6 +347,11 @@ final class PusherManager {
                 case .subscriptionError(let name, let code):
                     print("Error subscribing to channel \(name). Error code: \(String(describing: code))")
                 case .connectionChanged(let old, let new):
+                    if new == .connected {
+                        self?.keepAlive(value: true)
+                    } else {
+                        self?.keepAlive(value: false)
+                    }
                     print("Connection state changed from \(old.stringValue()) to \(new.stringValue())")
                 }
             }
@@ -392,6 +401,20 @@ final class PusherManager {
         }
     }
     
+    func keepAlive(value: Bool) {
+        if value {
+            keepAliveCallbackId = pusher?.bind(eventCallback: { event in
+                if event.eventName == "pusher:ping" {
+                    print("Keep pusher connection alive")
+                    self.pusher?.connection.sendEvent(event: "pusher:pong", data: [])
+                }
+            })
+        } else if let keepAliveCallbackId = keepAliveCallbackId {
+            print("Unbind keep-alive callback")
+            pusher?.unbind(callbackId: keepAliveCallbackId)
+        }
+    }
+    
     func triggerClientEvent(channelName: String, eventName: String, data: Any) {
         guard let channel = channels[channelName] else { return }
         
@@ -400,5 +423,6 @@ final class PusherManager {
     
     deinit {
         print("Pusher manager destructor!")
+        pusher?.unbindAll()
     }
 }

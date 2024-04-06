@@ -47,16 +47,19 @@ class ChatListViewModel: ObservableObject {
         }
     }
     
+    // @MainActor
     public func prependNewChat(chat: Chat) {
         chats.insert(chat, at: 0)
     }
     
+    @MainActor
     func loadMoreChatsIfRequired(index: Int) async throws {
         if chats.count < totalItems && chats.count == index + 1 {
             try await requestNextPage()
         }
     }
     
+    @MainActor
     private func requestNextPage() async throws {
         
         print("Loading more data. After ID: ", lastFetchedId as Any)
@@ -64,7 +67,7 @@ class ChatListViewModel: ObservableObject {
         await loadChats()
     }
     
-    // @MainActor
+    @MainActor
     public func performSearch() async throws {
         print("Performing search for: \(searchQuery)")
         
@@ -72,13 +75,14 @@ class ChatListViewModel: ObservableObject {
         await loadChats()
     }
     
-    // @MainActor
+    @MainActor
     public func resetSearch() async throws {
         searchQuery = ""
         resetList()
         await loadChats()
     }
     
+    @MainActor
     private func resetList() {
         chats = []
         totalItems = 0
