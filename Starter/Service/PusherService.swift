@@ -95,7 +95,6 @@ struct NotificationChannel {
     }
     
     func onMemberAdded(member: PusherPresenceChannelMember) {
-        
         guard let jsonData = try? JSONSerialization.data(withJSONObject: member.userInfo as Any) else {
             return
         }
@@ -301,7 +300,7 @@ final class PusherManager {
         }
         
         /*
-         Pusher settings.
+         Laravel Reverb settings.
          */
         let options = PusherClientOptions(
             authMethod: AuthMethod.authRequestBuilder(authRequestBuilder: AuthRequestBuilder(authToken: authToken)),
@@ -312,15 +311,14 @@ final class PusherManager {
         pusher = Pusher(key: "silextnxvnuat4blcxwg", options: options)
         
         /*
-         Soketi settings.
+         Pusher settings.
          */
 //        let options = PusherClientOptions(
 //            authMethod: AuthMethod.authRequestBuilder(authRequestBuilder: AuthRequestBuilder(authToken: authToken)),
-//            host: .host("127.0.0.1"),
-//            port: 6001,
-//            useTLS: false
+//            host: .cluster("mt1")
 //        )
-//        pusher = Pusher(key: "app-key", options: options)
+//        
+//        pusher = Pusher(key: "0771a4f2df23b943dcae", options: options)
         
         /*
          Common code.
