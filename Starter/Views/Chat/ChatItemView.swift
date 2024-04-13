@@ -77,14 +77,10 @@ struct ChatItemView: View {
         .onAppear {
             print("***** Chat view appeared!", chat.users.count)
             addSubscribers()
-            
-            print("+++++ Cancellables count on appear", cancellables.count)
         }
         .onDisappear {
             print("***** Chat view disappeared!")
             unsubscribeFromMessages()
-            
-            print("+++++ Cancellables count on disappear", cancellables.count)
         }
     }
     
