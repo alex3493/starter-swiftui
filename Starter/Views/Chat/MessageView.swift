@@ -20,9 +20,11 @@ struct MessageView: View {
                 if !isOutgoing {
                     Text("\(item.user.name)")
                 }
-                if isSenderConnected && !isOutgoing {
-                    Image(systemName: "phone.connection.fill")
-                }
+                // "Connected" indicator only works when we use Pusher connection.
+                // Reverb (current WS engine is not supported yet), for now we just hide "connected" icon.
+//                if isSenderConnected && !isOutgoing {
+//                    Image(systemName: "phone.connection.fill")
+//                }
             }
             Text(item.message)
                 .multilineTextAlignment(.leading)
