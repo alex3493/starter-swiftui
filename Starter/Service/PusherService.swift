@@ -318,7 +318,7 @@ final class PusherManager {
 //            host: .cluster("mt1")
 //        )
 //        
-//        pusher = Pusher(key: "0771a4f2df23b943dcae", options: options)
+//        pusher = Pusher(key: "your_pusher_key", options: options)
         
         /*
          Common code.
