@@ -76,7 +76,7 @@ struct NotificationChannel {
     }
     
     func subscribeToPresenceEvents() {
-        guard let _ = pusherManager.pusher else { return }
+        guard pusherManager.pusher != nil else { return }
         
         guard let chan = channel as? PusherPresenceChannel else { return }
         
