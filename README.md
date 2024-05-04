@@ -5,11 +5,12 @@ Starter is a super-basic multi-user chat application that uses [Laravel 11](http
 Features:
 
 - User can create an account and get instant access to chat list.
-- Login data is stored in secure chain, no need to re-login until user explicitly logs out.
+- User can log in from multiple devices, a dedicated access token will be created for each device.
+- Auth data is stored in secure chain, no need to re-login until user explicitly logs out.
 - User can update profile and logout and / or delete account.
 - User can create new chats.
 - User can join existing chats.
-- User can leave a chat hi is a member of.
+- User can leave a previously joined chat.
 - User can list messages of a joined chat.
 - User can add messages to a joined chat.
 - User can edit chat title if he is the first chat user (chat creator, by default).
@@ -19,6 +20,7 @@ Features:
 
 All chat activity is automatically shown on all connected devices. We are using [Laravel Reverb](https://reverb.laravel.com/) as WS engine, however there is an option to use [Pusher](https://pusher.com).
 WS service switch requires settings update on both API side and mobile application.
+There is a significant limitation: live updates work across different accounts only, i.e. if you are logged in as same user on multiple devices, updated may not be reflected on another device.
 
 # How to install
 
